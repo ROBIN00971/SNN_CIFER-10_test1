@@ -24,7 +24,7 @@ device = 'cuda' if torch.cuda.is_available() else 'cpu'
 model = VGG7(num_classes=10).to(device)
 
 # Load the trained model weights
-model_path = '/Users/rohit/Desktop/snn_project/vgg7_cifar10_advanced.pth'
+model_path = '/vgg7_cifar10_advanced.pth'
 if os.path.exists(model_path):
     model.load_state_dict(torch.load(model_path, map_location=device))
 else:
@@ -81,4 +81,5 @@ def predict():
     return jsonify({'error': 'An unknown error occurred'}), 500
 
 if __name__ == '__main__':
+
     app.run(debug=True, port=5500)
